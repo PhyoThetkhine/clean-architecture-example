@@ -11,6 +11,7 @@ public class BookEntity {
     private String title;
     private String author;
     private String isbn;
+    private String test;
 
     public BookEntity() {}
 
