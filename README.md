@@ -16,22 +16,21 @@ This repository is a small, educational Spring Boot application that demonstrate
 
 ## Project mapping (folders -> layers)
 
-- Domain (core models): `src/main/java/com/clean/clean_architecture_example/domain`
-  - `Book` (entity)
-  - `AuditLog` (application event / audit record)
-- Ports (interfaces): `src/main/java/com/clean/clean_architecture_example/port`
-  - `BookRepository` (port used by use-cases to persist books)
-  - `AuditRepository` (port used to record audit events)
-- Application / Use-cases: `src/main/java/com/clean/clean_architecture_example/application`
-  - `BookService` — implements use-cases and contains application logic (e.g., orchestration and audit recording)
-- Outbound adapters (infrastructure): `src/main/java/com/clean/clean_architecture_example/adapter/out/persistence`
-  - `JdbcBookRepository` — `BookRepository` implemented with `JdbcTemplate`
-  - `JdbcAuditRepository` — `AuditRepository` implemented with `JdbcTemplate`
-- Inbound adapters (web/UI): `src/main/java/com/clean/clean_architecture_example/adapter/in/web`
-  - `BookController` — Spring MVC controller that receives HTTP requests and uses DTOs at the boundary
-  - `BookMapper` — converts between DTOs and domain objects
+- Presentation (web / UI): `src/main/java/com/clean/clean_architecture_example/adapter/in/web`
+  - `BookController` — Spring MVC controller; handles HTTP requests and binds `BookDto`.
+  - `BookMapper` — maps between `BookDto` and `Book` domain.
+- Application (use-cases / services): `src/main/java/com/clean/clean_architecture_example/application`
+  - `BookService` — orchestrates use-cases and contains application business logic (e.g., audit orchestration).
+- Domain (entities / business rules): `src/main/java/com/clean/clean_architecture_example/domain`
+  - `Book` — core entity
+  - `AuditLog` — audit record created by application logic
+- Infrastructure (adapters / persistence / external): `src/main/java/com/clean/clean_architecture_example/adapter/out/persistence`
+  - `JdbcBookRepository` — `BookRepository` implemented with `JdbcTemplate` (infrastructure)
+  - `JdbcAuditRepository` — `AuditRepository` implemented with `JdbcTemplate` (infrastructure)
+- Ports (interfaces / boundaries): `src/main/java/com/clean/clean_architecture_example/port`
+  - `BookRepository`, `AuditRepository` — interfaces that the application layer relies on
 - DTOs: `src/main/java/com/clean/clean_architecture_example/dto`
-  - `BookDto` — data transfer object used at the web boundary for safety and validation
+  - `BookDto` — data transfer object used at the presentation boundary for safety and validation
 - Resources and SQL: `src/main/resources`
   - `application.properties` — app configuration / datasource
   - `schema.sql` — demo schema (creates `books` and `audit_logs` tables)
