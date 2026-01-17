@@ -1,4 +1,4 @@
-package com.clean.clean_architecture_example.adapter.out.persistence;
+package com.clean.clean_architecture_example.adapter.out.persistence.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;

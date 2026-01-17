@@ -1,8 +1,9 @@
 package com.clean.clean_architecture_example.adapter.out.persistence;
 
+import com.clean.clean_architecture_example.adapter.out.persistence.entity.BookEntity;
+import com.clean.clean_architecture_example.adapter.out.persistence.jpa.BookSpringDataRepository;
 import com.clean.clean_architecture_example.domain.Book;
 import com.clean.clean_architecture_example.port.BookRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;

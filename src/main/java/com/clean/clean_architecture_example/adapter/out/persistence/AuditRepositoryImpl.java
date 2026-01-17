@@ -1,8 +1,9 @@
 package com.clean.clean_architecture_example.adapter.out.persistence;
 
+import com.clean.clean_architecture_example.adapter.out.persistence.entity.AuditEntity;
+import com.clean.clean_architecture_example.adapter.out.persistence.jpa.AuditSpringDataRepository;
 import com.clean.clean_architecture_example.domain.AuditLog;
 import com.clean.clean_architecture_example.port.AuditRepository;
-import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;
 
