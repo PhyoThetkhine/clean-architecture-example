@@ -5,7 +5,7 @@ public class BookDto {
     private String title;
     private String author;
     private String isbn;
-
+    private String test;
     public BookDto() {}
 
     public BookDto(Long id, String title, String author, String isbn) {
